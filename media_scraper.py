@@ -1,12 +1,24 @@
 import tweepy
 import requests
-import os.path
+import os
 import sys
+from dotenv import load_dotenv
 
-consumer_key='immKBDSXqUC2CouhHW9tlAf8U'
-consumer_secret='THOxLngcaCG7kplRwN3E3WFbpwsjwiz3QcDlrM4XFYfaKx7jwJ'
-access_token_key='2817720176-R4jHJ9IjTRlLVknk7VyionaD08yi5hEXkHOfhav'
-access_token_secret='jXQQZ62FucViuflNIF6aJBK4vbgXT2J6qn5IvcuktNKOy'
+#get API keys within heroku environment
+consumer_key=str(os.environ.get('CONSUMER_KEY'))
+consumer_secret=str(os.environ.get('CONSUMER_SECRET'))
+access_token_key=str(os.environ.get('ACCESS_TOKEN_KEY'))
+access_token_secret=str(os.environ.get('ACCESS_TOKEN_SECRET'))
+
+#if using script outside of heroku environment
+if consumer_key == 'None':
+    load_dotenv()
+    consumer_key=str(os.environ.get('CONSUMER_KEY'))
+    consumer_secret=str(os.environ.get('CONSUMER_SECRET'))
+    access_token_key=str(os.environ.get('ACCESS_TOKEN_KEY'))
+    access_token_secret=str(os.environ.get('ACCESS_TOKEN_SECRET'))
+
+
 #init API
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token_key, access_token_secret)
