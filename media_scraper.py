@@ -3,6 +3,7 @@ import requests
 import os
 import sys
 from dotenv import load_dotenv
+#all api keys stored in .env file
 
 #get API keys within heroku environment
 consumer_key=str(os.environ.get('CONSUMER_KEY'))
