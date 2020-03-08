@@ -1,67 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Javier Ortiz">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160038813-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <title>Scrape Twitter Videos</title>
+  gtag('config', 'UA-160038813-1');
+</script>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="Javier Ortiz">
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Scrape Twitter Videos</title>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
-    <!-- Custom styles for this template -->
-    <link href="/static/cover.css" rel="stylesheet">
-  </head>
+<!-- Custom styles for this template -->
+<link href="/static/cover.css" rel="stylesheet">
+</head>
 
-  <body class="text-center">
+<body class="text-center">
 
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">Twitter Video Scraper</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="http://jaortiz117.github.io">Github</a>
-          </nav>
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">Twitter Video Scraper <sup>(beta)</sup></h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="#">Home</a>
+          <a class="nav-link" href="http://jaortiz117.github.io">Github</a>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Find all videos from a Twitter search.</h1>
+      <p class="lead">Enter a hashtag, or any search term. Get a lot of videos.</p>
+      <div class="lead">
+        <div class="input-group input-group-lg">
+          <form id="search-form" class="input-group input-group-lg" action="/download" method="POST">
+            <input type="text" class="form-control" placeholder="#vidscrape" name="search" id="search">
+            <div class="input-group-append">
+              <!-- <input type="submit" value="submit" class="btn btn-lg btn-primary" /> -->
+              <!-- <a href="#" type="submit" id="search-btn" class="btn btn-lg btn-primary">Download</a> -->
+              <input href="#" type="submit" id="search-btn" class="btn btn-lg btn-primary" />
+            </div>
+          </form>
         </div>
-      </header>
+      </div>
 
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">Find all videos from a Twitter search.</h1>
-        <p class="lead">Enter a hashtag, or any search term. Get a lot of videos.</p>
-        <div class="lead">
-          <div class="input-group input-group-lg">
-            <form id="search-form" class="input-group input-group-lg" action="/download" method="POST">
-              <input type="text" class="form-control" placeholder="#vidscrape" name="search" id="search">
-              <div class="input-group-append">
-                <!-- <input type="submit" value="submit" class="btn btn-lg btn-primary" /> -->
-                <!-- <a href="#" type="submit" id="search-btn" class="btn btn-lg btn-primary">Download</a> -->
-                <input href="#" type="submit" id="search-btn" class="btn btn-lg btn-primary" />
-              </div>
-            </form>
-          </div>
-        </div>
+      <img id="loader" style='display:none' src="/static/assets/ajax-loader.gif" alt="">
+    </main>
 
-        <img id="loader" style='display:none' src="/static/assets/ajax-loader.gif" alt="">
-      </main>
-
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>Made with <span style="color: #e25555;">&#9829;</span> in PR by <a href="https://twitter.com/ogjavijavs">@ogjavijavs</a>.</p>
-        </div>
-      </footer>
-    </div>
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>Made with <span style="color: #e25555;">&#9829;</span> in PR by <a href="https://twitter.com/ogjavijavs">@ogjavijavs</a>.</p>
+      </div>
+    </footer>
+  </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="/static/script.js"></script> -->
-  </body>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="/static/script.js"></script> -->
+</body>
 </html>
