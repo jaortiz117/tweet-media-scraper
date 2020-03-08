@@ -3,8 +3,11 @@ import requests
 import os
 import sys
 from dotenv import load_dotenv
-#all api keys stored in .env file
+import zipfile
+import io
+import pathlib
 
+#all api keys stored in .env file
 #get API keys within heroku environment
 consumer_key=str(os.environ.get('CONSUMER_KEY'))
 consumer_secret=str(os.environ.get('CONSUMER_SECRET'))
@@ -68,12 +71,28 @@ def save_media(url, path):
     open(path, 'wb').write(file.content)
 
 #main method
-def scrape(tag, path, count=10, likes=0, lang=None):
+def scrape(tag, path, count=10, likes=0, lang=None, zip=False):
     for i in search(tag, count = count, likes=likes, lang=lang):
 
         url = get_media(i)
         if url:
             save_media(url, path + i.user.screen_name)
+
+    if zip:
+        return get_zip_data(path)
+
+    return True
+
+def get_zip_data(path):
+    base_path = pathlib.Path("./"+path)
+    data = io.BytesIO()
+    with zipfile.ZipFile(data, mode='w') as z:
+        for f_name in base_path.iterdir():
+            z.write(f_name)
+            os.unlink(f_name)
+    data.seek(0)
+    return data
+
 
 #usage:
 #on terminal write python media_scraper.py [tag] [folder path] [tweet count]

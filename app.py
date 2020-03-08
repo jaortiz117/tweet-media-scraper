@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, send_file, request
+from media_scraper import scrape
 app = Flask(__name__)
 
 # index (adds user through view)
@@ -9,7 +9,14 @@ def index():
 
 @app.route('/download', methods=['GET'])
 def download():
-    return render_template('index.html')
+    term = request.json["term"]
+    file = scrape(term, term + '/', count=30, zip=True)
+    return send_file(
+    file,
+    mimetype='application/zip',
+    as_attachment=True,
+    attachment_filename=term + '.zip'
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)

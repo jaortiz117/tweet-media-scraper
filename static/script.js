@@ -1,11 +1,14 @@
 $(document).ready(function(){
   $('#search-btn').click( function() {
-    console.log({term: $('input#search.form-control').val()})
+    data = {term:$('input#search.form-control').val()}
+    console.log(data)
     $.ajax({
         url: 'download',
-        type: 'get',
-        dataType: 'application/json',
-        data: {term: $('input#search.form-control').val()},
+        type: 'GET',
+        contentType: 'application/json; charset=UTF-8',
+        data: data,
+        // data: JSON.stringify(data),
+        processData: false,
         beforeSend: function(){
           $("#loader").show();
         },
