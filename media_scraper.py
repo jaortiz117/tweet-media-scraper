@@ -72,6 +72,10 @@ def save_media(url, path):
 
 #main method
 def scrape(tag, path, count=10, likes=0, lang=None, zip=False):
+    #create dir if not exists
+    if not os.path.exists(path):
+        os.mkdir(path)
+
     for i in search(tag, count = count, likes=likes, lang=lang):
 
         url = get_media(i)
@@ -90,6 +94,7 @@ def get_zip_data(path):
         for f_name in base_path.iterdir():
             z.write(f_name)
             os.unlink(f_name)
+    os.rmdir(path)
     data.seek(0)
     return data
 

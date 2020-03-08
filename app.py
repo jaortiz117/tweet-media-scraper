@@ -7,10 +7,13 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/download', methods=['GET'])
+@app.route('/download', methods=['POST'])
 def download():
-    term = request.json["term"]
+    # term = request.json["term"]
+    term = request.form.get("search")
+    print(term)
     file = scrape(term, term + '/', count=30, zip=True)
+
     return send_file(
     file,
     mimetype='application/zip',

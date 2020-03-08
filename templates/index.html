@@ -35,22 +35,24 @@
         <h1 class="cover-heading">Find all videos from a Twitter search.</h1>
         <p class="lead">Enter a hashtag, or any search term. Get a lot of videos.</p>
         <div class="lead">
-          <!-- TODO insert search box here -->
           <div class="input-group input-group-lg">
-            <input type="text" class="form-control" placeholder="#vidscrape" id="search">
-            <div class="input-group-append">
-              <a href="#" id="search-btn" class="btn btn-lg btn-primary">Download</a>
-            </div>
+            <form id="search-form" class="input-group input-group-lg" action="/download" method="POST">
+              <input type="text" class="form-control" placeholder="#vidscrape" name="search" id="search">
+              <div class="input-group-append">
+                <!-- <input type="submit" value="submit" class="btn btn-lg btn-primary" /> -->
+                <!-- <a href="#" type="submit" id="search-btn" class="btn btn-lg btn-primary">Download</a> -->
+                <input href="#" type="submit" id="search-btn" class="btn btn-lg btn-primary" />
+              </div>
+            </form>
           </div>
         </div>
 
-        <img id="loader" style="visibility:hidden" src="/static/assets/ajax-loader.gif" alt="">
+        <img id="loader" style='display:none' src="/static/assets/ajax-loader.gif" alt="">
       </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
           <p>Application made by <a href="https://twitter.com/ogjavijavs">@ogjavijavs</a>.</p>
-          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
         </div>
       </footer>
     </div>
@@ -60,6 +62,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/static/script.js"></script>
+    <!-- <script src="/static/script.js"></script> -->
   </body>
 </html>
