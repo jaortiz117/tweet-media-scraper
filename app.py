@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_file, request
+from flask import Flask, render_template, send_file, request, redirect, url_for
 from media_scraper import scrape
 app = Flask(__name__)
 
@@ -9,17 +9,21 @@ def index():
 
 @app.route('/download', methods=['POST'])
 def download():
-    # term = request.json["term"]
-    term = request.form.get("search")
-    print(term)
-    file = scrape(term, term + '/', count=30, zip=True)
+    try:
+        # term = request.json["term"]
+        term = request.form.get("search")
+        print(term)
+        file = scrape(term, term + '/', count=50, zip=True)
 
-    return send_file(
-    file,
-    mimetype='application/zip',
-    as_attachment=True,
-    attachment_filename=term + '.zip'
-    )
+        return send_file(
+        file,
+        mimetype='application/zip',
+        as_attachment=True,
+        attachment_filename=term + '.zip'
+        )
+
+    except:
+        return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
