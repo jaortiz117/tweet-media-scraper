@@ -3,6 +3,8 @@
 Scrape videos from twitter search. Useful for getting data for your AI training
 or fetching videos on a topic for any type of research or lookup.
 
+Use the app: [Twitter Video Scraper](https://tweet-media-scraper.herokuapp.com/)
+
 ## Installation
 ### Setting up the virtual environment
 Install virtualenv package:
