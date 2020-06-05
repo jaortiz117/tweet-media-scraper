@@ -13,7 +13,7 @@ def download():
         # term = request.json["term"]
         term = request.form.get("search")
         print(term)
-        file = scrape(term, term + '/', count=50, zip=True)
+        file = scrape(term, term + '/', count=40, zip=True)
 
         return send_file(
         file,
